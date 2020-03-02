@@ -73,6 +73,10 @@ class BakeryConfiguration {
   }
 
   BakeryService buildService(String url) {
+    retrofitClient
+      .connectTimeout(500, TimeUnit.SECONDS)
+      .readTimeout(500, TimeUnit.SECONDS)
+
     return new RestAdapter.Builder()
       .setEndpoint(newFixedEndpoint(url))
       .setRequestInterceptor(spinnakerRequestInterceptor)
